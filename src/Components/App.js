@@ -1,11 +1,22 @@
+import { Switch, Route } from 'react-router-dom';
+
 import HomePage from './pages/HomePage/HomePage';
 import Navigation from './Navigation/Navigation';
+import MoviesPage from "./pages/MoviesPage/MoviesPage";
 
 export default function App() {
   return (
     <>
       <Navigation />
-      <HomePage />
+      <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+
+          <Route path="/movies" exact>
+            <MoviesPage />
+          </Route>
+        </Switch>
     </>
   );
 }
