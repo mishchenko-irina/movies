@@ -1,0 +1,46 @@
+.container {
+  width: 1200px;
+  margin: auto;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 3px;
+}
+
+.input {
+  display: inline-block;
+  width: 100%;
+  font: inherit;
+  font-size: 20px;
+  outline: none;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.button {
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+
+.listItem {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.listItem:hover {
+  color: blue;
+}

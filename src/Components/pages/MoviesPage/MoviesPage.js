@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import s from './MoviesPage.module.css';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '3142d2f0e702d1702011ab61439e63b1';
@@ -41,26 +42,27 @@ export default function MoviesPage() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <button type="submit" onClick={btnClick}>
+    <div className={s.container}>
+      <form onSubmit={handleSubmit} className={s.form}>
+        <button type="submit" onClick={btnClick} className={s.button}>
           <span>Search</span>
         </button>
 
-        <input type="text" onChange={handleInput} />
+        <input type="text" onChange={handleInput} className={s.input} />
       </form>
 
-      <ul>
+      <ul className={s.list}>
         {movies &&
           movies.map(movie => (
             <Link
               to={`/movies/${movie.id}`}
               key={movie.id}
+              className={s.listItem}
             >
               {movie.title}
             </Link>
           ))}
       </ul>
-    </>
+    </div>
   );
 }
