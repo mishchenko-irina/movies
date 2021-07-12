@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams} from 'react-router-dom';
+import { useState, useEffect} from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '3142d2f0e702d1702011ab61439e63b1';
@@ -24,11 +24,11 @@ export default function MovieDetailsPage() {
       });
   };
 
-//   const history = useHistory();
+  const history = useHistory();
 
-//   const btnClick = () => {
-//     history.goBack();
-//   }
+  const btnClick = () => {
+    history.goBack();
+  };
 
   const genres = movie.genres;
 
@@ -36,7 +36,11 @@ export default function MovieDetailsPage() {
     <>
       {movie && (
         <div>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+          <button onClick={btnClick}>Go back</button>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
           <h1>{movie.title}</h1>
           <p>User score: {movie.popularity}</p>
           <h3>Overview</h3>
@@ -49,7 +53,6 @@ export default function MovieDetailsPage() {
           <hr />
         </div>
       )}
-     
     </>
   );
 }
