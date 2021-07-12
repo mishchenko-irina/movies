@@ -1,7 +1,9 @@
-import HomePage from "./HomePage/HomePage";
+import HomePage from './HomePage/HomePage';
 
 export default function App() {
-    return (
-        <HomePage />
-    )
+  return (
+    <>
+      <HomePage />
+    </>
+  );
 }
