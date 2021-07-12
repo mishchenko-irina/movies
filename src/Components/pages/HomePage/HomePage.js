@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import s from './HomePage.module.css';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '3142d2f0e702d1702011ab61439e63b1';
@@ -20,14 +21,15 @@ export default function HomePage() {
   };
 
   return (
-    <div>
-      <h2>Trending today</h2>
-      <ul>
+    <div className={s.container}>
+      <h2 className={s.title}>Trending today</h2>
+      <ul className={s.list}>
         {movies &&
           movies.map(movie => (
             <Link
               to={`/movies/${movie.id}`}
               key={movie.id}
+              className={s.listItem}
             >
               {movie.title}
             </Link>
