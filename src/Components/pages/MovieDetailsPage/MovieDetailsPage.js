@@ -1,5 +1,6 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import Cast from './../Cast/Cast';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '3142d2f0e702d1702011ab61439e63b1';
@@ -53,6 +54,15 @@ export default function MovieDetailsPage() {
           <hr />
         </div>
       )}
+      <h2>Additional information</h2>
+      <ul>
+        <li>
+          <Cast movie={movie} />
+          Cast
+        </li>
+        <li>Reviews</li>
+      </ul>
+      <hr />
     </>
   );
 }
