@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import {
+  useParams,
+  NavLink,
+  Route,
+  useHistory,
+  useRouteMatch,
+} from 'react-router-dom';
 import Cast from './../Cast/Cast';
+import Reviews from './../Reviews/Reviews';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '3142d2f0e702d1702011ab61439e63b1';
@@ -8,6 +15,7 @@ const apiKey = '3142d2f0e702d1702011ab61439e63b1';
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
+  const { url } = useRouteMatch();
 
   useEffect(() => {
     getMovieFullInfo();
@@ -57,12 +65,18 @@ export default function MovieDetailsPage() {
       <h2>Additional information</h2>
       <ul>
         <li>
-          <Cast movie={movie} />
-          Cast
+          <NavLink to={`${url}/cast`}>Cast</NavLink>
         </li>
-        <li>Reviews</li>
+        <li>
+          <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+        </li>
       </ul>
       <hr />
+      <Route path={`${url}/cast`}>{movie && <Cast movie={movie} />}</Route>
+
+      <Route path={`${url}/reviews`}>
+        {movie && <Reviews movie={movie} />}
+      </Route>
     </>
   );
 }
