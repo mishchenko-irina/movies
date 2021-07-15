@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Cast from './../Cast/Cast';
 import Reviews from './../Reviews/Reviews';
+import s from './MovieDetailsPage.module.css';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '3142d2f0e702d1702011ab61439e63b1';
@@ -42,23 +43,34 @@ export default function MovieDetailsPage() {
   const genres = movie.genres;
 
   return (
-    <>
+    <div className={s.container}>
       {movie && (
-        <div>
-          <button onClick={btnClick}>Go back</button>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-          <h1>{movie.title}</h1>
-          <p>User score: {movie.popularity}</p>
-          <h3>Overview</h3>
-          <p>{movie.overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {genres &&
-              genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
-          </ul>
+        <div >
+          <button onClick={btnClick} className={s.button}>
+            Go back
+          </button>
+          <div className={s.mainInfo}>
+            <div>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className={s.img}
+              />
+            </div>
+            <h1 className={s.title}>{movie.title}</h1>
+            <span>
+            <p>User score: {movie.popularity}</p>
+            
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+            
+            <h3>Genres</h3>
+            <ul>
+              {genres &&
+                genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
+            </ul>
+            </span>
+          </div>
           <hr />
         </div>
       )}
@@ -77,6 +89,6 @@ export default function MovieDetailsPage() {
       <Route path={`${url}/reviews`}>
         {movie && <Reviews movie={movie} />}
       </Route>
-    </>
+    </div>
   );
 }
