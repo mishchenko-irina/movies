@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
+import s from "./Reviews.module.css";
 
 const baseUrl = 'https://api.themoviedb.org/3';
 const apiKey = '3142d2f0e702d1702011ab61439e63b1';
@@ -27,11 +28,11 @@ export default function Reviews({ movie }) {
     <>
       <h2>Reviews</h2>
       {isReviewsFull ? (
-        <ul>
+        <ul className={s.list}>
           {reviews.map(review => (
-            <li key={review.id}>
+            <li key={review.id} className={s.listItem}>
               <h3>Author: {review.author}</h3>
-              <p>{review.content}</p>
+              <p className={s.text}>{review.content}</p>
             </li>
           ))}
         </ul>
